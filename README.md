@@ -4,14 +4,14 @@ A custom bill splitting web app to make going out with friends easier!
 A repository to hold our project data from the course "Software Engineering." This software was built with the Scrum Agile process, and all tasks are previously scheduled and thought out to best fit the needs of our clients.
 
 ## Team Members
-Jonathan Rivera rivejona@kean.edu
+[Jonathan Rivera](https://thejonathanrivera.com "Jonathan's Portfolio"), FullStack Developer, rivejona@kean.edu
 
-Aspen Akunne
+[Aspen Akunne](https://github.com/AkunneA "Aspen's Portfolio"), Backend Developer, akunnea@kean.edu
 
-Stacy Fortes, Scrum Master
+[Stacy Fortes](https://github.com/stacy-cf "Stacy's Portfolio"), Scrum Master, fortess@kean.edu
 
-Joao Borges
+Joao Borges, Backend Developer, borgesj@kean.edu
 
-John DiMaggio
+John DiMaggio, FrontEnd Developer, dimaggij@kean.edu
 
-Thomas Sampson
+[Thomas Sampson](https://github.com/Thomas-Sampson1 "Thomas' Portfolio"), Backend Developer, sampsoth@kean.edu
