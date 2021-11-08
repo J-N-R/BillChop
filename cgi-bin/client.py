@@ -10,7 +10,7 @@
 #    If a server cannot be found, create one.
 #
 # Made By:
-#   whoever@kean.edu
+#   rivejona@kean.edu
 #
 
 # import necessary stuff
