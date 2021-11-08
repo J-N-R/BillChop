@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3.8
+#!/usr/local/bin/python3.9
 
 #
 # client.py
@@ -18,3 +18,15 @@
 # maybe a couple of if statments here
 
 # send information with imported function
+
+import easySocket
+
+print("Client Starting...")
+
+try:
+    conn = easySocket.connect_tcp("131.125.80.107", 7500)
+    conn.send('Hi! -client'.encode())
+    print(conn.recv(1024).decode())
+    print("Connection finished!")
+except:
+    print("Error Connecting! Please try again. Error: ")
