@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3.8
+#!/usr/local/bin/python3.9
 
 #
 # server.py
@@ -13,12 +13,29 @@
 #    All results will be printed in JSON, including errors
 #
 # Made By:
-#   whoever@kean.edu
+#   rivejona@kean.edu
 #
 
 
-# import stuff for server, if needed we can install something
+import easySocket
+import socket
 
+print("Server Starting...")
+
+s = socket.socket()
+s.bind(("131.125.80.107", 7500))
+s.listen(5)
+
+count = 0
+
+while count < 2:
+    conn, address = s.accept()
+    count = count + 1
+    print(conn.recv(1024).decode())
+    conn.send('Hi! -Server'.encode())
+    conn.close()
+
+print("Connection Finished")
 # accept incoming connections (there will need to be a client.py that accepts cgi and connects to server)
 
 # be able to sum up a client's chosen options
