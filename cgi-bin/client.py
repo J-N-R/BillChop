@@ -14,8 +14,23 @@
 # send information with imported function
 
 import easySocket
+import cgi
+import cgitb
+
 
 print("Client Starting...")
+
+# Enable cgitb and set form
+cgitb.enable()
+form = cgi.FieldStorage()
+
+if 'items' not in form:
+  print("No Parameters detected.")
+  quit()
+
+# Send Email
+items   = form.getvalue('name')
+
 
 try:
 
