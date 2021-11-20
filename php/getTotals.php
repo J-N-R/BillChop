@@ -6,7 +6,8 @@
    // Description:(revisit)
    //    PHP Script that when called will return a JSON for giving
    //    the total a user owes
-
+   //
+   //
    include "dbconfig.php";
 
    // Helper function to print error message in JSON
@@ -25,6 +26,7 @@
  $sql = "SELECT Owner, SUM(price) as Total FROM Items WHERE bid=" . $_GET['bid'] . "GROUP BY owner";
 
  $results = mysqli_query($conn, $sql) or print_error("Can't run SQL query. Query = $sql");
+
  // If there are valid items, print out to webpage
       if(mysqli_num_rows($results) > 0) {
          
