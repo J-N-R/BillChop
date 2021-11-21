@@ -1,38 +1,40 @@
 <?php
-include "dbconfig.php"
 
-# Check if fields are set
-if (!isset($_GET['bid']) or !isset($_GET['id']) or !isset($_GET['owner']))
-{
-	die("One or more fields are not set.");
-}
+   //
+   // updateBill.php
+   //
+   // Description:
+   //    PHP Script that will update the database everytime a user
+   //    selects an item. 
+   //
+   //
+   // Made By: borgesj@kean.edu
+   //
 
-# Get fields
-$bid = $_GET['bid'];
-$id = $_GET['id'];
-$owner = $_GET['owner'];
+   include "dbconfig.php";
 
-# Set up connection
-$conn mysqli_connect($host, $user, $password, $database) or die("Can't connect to the database.");
 
-# Update item owner
-$sql = "UPDATE Items SET owner=$owner WHERE bid=$bid AND id=$id";
-mysqli_query($conn, $sql) or die("SQL query failed. Query = $sql");
+// Helper function to print error message in JSON
+   function print_error($message) {
+      DIE("{\"Error\":\"$message\"}");
+   }
 
-# If update succeeded, then retrive updated item
-$sql = "SELECT id, bid, owner FROM Items WHERE id=$id AND bid=$bid AND owner=$owner";
-$results = mysqli_query($conn, $sql) or die("SQL query failed. Query = $sql");
 
-if ($results)
-{
-	# If found, should only fetch one row since id is unique
-	$row = mysqli_fetch_assoc($results);
+// If bid, id, or owner isn't set, print error
+   if (!isset($_GET['bid']) or !isset($_GET['id']) or !isset($_GET['owner']))
+      print_error("One or more fields are not set.");
 
-	# Generate JSON of results and terminate
-	die(json_encode($row));
-}
-else
-{
-	die("Item not found.");
-}
+// Get fields
+   $bid = $_GET['bid'];
+   $id = $_GET['id'];
+   $owner = $_GET['owner'];
+
+// Go to database, and update the item with the given bid and id with their new owner.
+   $conn = mysqli_connect($host, $user, $password, $database) or print_error("Can't connect to the database.");
+
+   $sql = "UPDATE Items SET owner='$owner' WHERE bid=$bid AND id=$id";
+   mysqli_query($conn, $sql) or print_error("SQL query failed. Query = $sql");
+   
+   DIE("{\"Success\":\"Item has been updated. Query = $sql\"}");
+
 ?>
