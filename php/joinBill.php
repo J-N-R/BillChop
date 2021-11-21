@@ -33,7 +33,7 @@
    $results = mysqli_query($conn, $sql) or print_error("Can't run SQL query. Query = $sql");
 
 // If the bill exists, update user count, give user all the items to display on page
-   if($results) {
+   if(mysqli_num_rows($results) > 0) {
 
    // Update Count of Users
       $sql = "UPDATE Bills SET users = users + 1 WHERE bid=" . $_GET['bid'];
