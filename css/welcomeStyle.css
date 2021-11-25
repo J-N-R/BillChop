@@ -96,7 +96,7 @@
         border-radius: 20px;
         background-color: #aaa;
         overflow: hidden;
-        background: url(img/phonecontents.jpg);
+        background: url(../img/phonecontents.jpg);
         background-size: cover;
         background-position: center;
         z-index: -1;
