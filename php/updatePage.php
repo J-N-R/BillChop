@@ -4,7 +4,7 @@
 
   $conn = mysqli_connect($host, $user, $password, $database) or die("{\"Error\":\"Can't connect to database\"}");
 
-  $sql = "SELECT * FROM Items WHERE bid=" . $_POST["bid"];
+  $sql = "SELECT * FROM Items WHERE bid=" . $_GET["bid"];
 
   $results = mysqli_query($conn, $sql) or die("{\"Error\":\"Can't run SQL command\"}");
 
