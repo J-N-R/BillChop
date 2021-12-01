@@ -1,4 +1,11 @@
 $(document).ready(function() {
+ 
+ // When someone clicks 'submit,' send them to the totals page   
+    $("#update-form").submit(function(event) {
+        event.preventDefault();
+        
+        window.location.replace("totals.html");
+    });
     
  // if bill cookie is not set, tell the user
     if(!Cookies.get("bid"))
@@ -8,6 +15,7 @@ $(document).ready(function() {
     fetch("php/joinBill.php?bid=" + Cookies.get("bid"))
         .then(response => response.json())
         .then(data => console.log(data));
+        
     
  // data is the JSON object. This is where I think Joao takes over
 });
