@@ -28,15 +28,14 @@
 
 // Go to the database and retrieve all the items for a certain bill
    $conn = mysqli_connect($host, $user, $password, $database) or print_error("Can't connect to the database.");
-//if number of users is specified use that number otherwise grab from database
-if(isset($_GET['users'])) 
-   {
-   $sql = "SELECT SUM(price)/". $_GET['users'] . " as Total FROM Items WHERE bid=" . $_GET['bid'];
-   }
-else
-   {
-   $sql = "SELECT SUM(i.price)/b.users as Total FROM Items i, Bills b WHERE b.bid=" . $_GET['bid'];
-   }
+
+// if number of users is specified use that number otherwise grab from database
+   if(isset($_GET['users'])) 
+      $sql = "SELECT SUM(price)/". $_GET['users'] . " as Total FROM Items WHERE bid=" . $_GET['bid'];
+ 
+   else
+      $sql = "SELECT SUM(i.price)/b.users as Total FROM Items i, Bills b WHERE b.bid=" . $_GET['bid'];
+   
    $results = mysqli_query($conn, $sql) or print_error("Can't run SQL query. Query = $sql");
 
 // If there are valid items, print out to webpage
@@ -50,8 +49,8 @@ else
       DIE(json_encode($data));
    }
 
-   else {
+   else
       print_error("No bill items found.");
-   }
+   
     
 ?>
