@@ -32,7 +32,11 @@
 // Go to database, and update the item with the given bid and id with their new owner.
    $conn = mysqli_connect($host, $user, $password, $database) or print_error("Can't connect to the database.");
 
-   $sql = "UPDATE Items SET owner='$owner' WHERE bid=$bid AND id=$id";
+   if($owner == null || $owner == "null")
+      $sql = "UPDATE Items SET owner=null WHERE bid=$bid AND id=$id";
+   else
+      $sql = "UPDATE Items SET owner='$owner' WHERE bid=$bid AND id=$id";
+
    mysqli_query($conn, $sql) or print_error("SQL query failed. Query = $sql");
    
    DIE("{\"Success\":\"Item has been updated. Query = $sql\"}");

@@ -30,7 +30,7 @@
    $conn = mysqli_connect($host, $user, $password, $database) or print_error("Can't connect to the database.");
 
 // if number of users is specified use that number otherwise grab from database
-   if(isset($_GET['users'])) 
+   if(isset($_GET['users']) && $_GET['users'] != "") 
       $sql = "SELECT SUM(price)/". $_GET['users'] . " as Total FROM Items WHERE bid=" . $_GET['bid'];
  
    else
