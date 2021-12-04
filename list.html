@@ -32,31 +32,22 @@
   </head>
   <body>
     <center>
-      <h1>Billchop (prototype)</h1>
-      <h2>Split your Bill!</h2>
-      
-      <br>
-      
+      <section class="highlight-phone">
+        <div class="container">
+          <div class="intro">
+            <h2>BillChop</h2>
+            <p>Click an item to pay for it!
+            <br>Your Bill Code is: <b id="code"></b></p>
+          </div>
+        </div>
+      </section>
+      <ul id="list" class="list-group"></ul>
+      <br><br>
+      <button class="btn btn-primary" onclick="window.location.replace('totals.html')">Get Totals</button>
+      <br><br>
       <form id="split-form">
-        <h2>Do you want to split evenly?</h2>
-        <input type="submit" value="Yes">
-      </form>
-        
-      <br>
-      <br>
-      <form id="update-form">
-        <h3>Items:&nbsp; &nbsp; &nbsp;</h3>
-        
-        <input id="item1" name="items" type="checkbox" value="item1" onclick="updateItem(this)">
-        <label for="item1">item1</label><br>
-        
-        <input id="item2" name="items" type="checkbox" value="item2" onclick="updateItem(this)">
-        <label for="item2">item2</label><br>
-        
-        <input id="item3" name="items" type="checkbox" value="item3" onclick="updateItem(this)"> 
-        <label for="item3">item3</label><br><br>
-        
-        <input type="submit" value="Submit">
+        <h2>Would you like to split the bill evenly?</h2>
+        <button onclick="alert('too bad')">Yes</button>
       </form>
     </center>
   </body>

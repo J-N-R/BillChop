@@ -40,8 +40,13 @@
 
       mysqli_query($conn, $sql) or print_error("Can't run second SQL query. Query = $sql");
 
-   // Retrieve list of items, serve to user through JSON
-      $sql = "SELECT * FROM Items WHERE bid=" . $_GET['bid'];
+   // Retrieve all the items from the bill
+   // Combine with Users_Colors table and Colors table to retrieve item colors
+      $sql = "SELECT i.id, i.bid, i.name, i.price, i.owner, c.color " .
+             "FROM Items i " . 
+             "LEFT JOIN Users_Colors u ON i.bid=u.bid AND i.owner=u.owner " . 
+             "LEFT JOIN Colors c ON u.cid=c.cid " .
+             "WHERE i.bid=" . $_GET['bid'];
       
       $results = mysqli_query($conn, $sql) or print_error("Can't run third SQL query. Query = $sql");
 
