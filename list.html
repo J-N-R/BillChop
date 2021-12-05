@@ -41,14 +41,19 @@
           </div>
         </div>
       </section>
-      <ul id="list" class="list-group"></ul>
-      <br><br>
-      <button class="btn btn-primary" onclick="window.location.replace('totals.html')">Get Totals</button>
-      <br><br>
-      <form id="split-form">
-        <h2>Would you like to split the bill evenly?</h2>
-        <button onclick="alert('too bad')">Yes</button>
-      </form>
+      <div class="container">
+        <ul id="list" class="list-group"></ul>
+        <br><br>
+        <button class="btn btn-primary" onclick="window.location.href = 'totals.html'">Get Totals</button>
+        <br><br>
+        <form id="split-form">
+          <h2>Would you like to split the bill evenly?</h2>
+          <button onclick="alert('too bad')">Yes</button>
+        </form>
+        <br><br>
+        <h2 style='margin-bottom: 25px'>Legend</h2>
+        <div id="legend"></div>
+      </div>
     </center>
   </body>
 </html>

@@ -52,7 +52,20 @@
             $data[] = $row;
          }
 
-         DIE(json_encode($data));
+         echo("[");
+         echo(json_encode($data) . ", ");
+         
+         $sql = "SELECT owner, color FROM Users_Colors u, Colors c WHERE u.cid = c.cid";
+
+         $results = mysqli_query($conn, $sql) or print_error("Can't run fourth SQL query. Query = $sql");
+         
+         $data = array();
+         while($row = mysqli_fetch_assoc($results)) {
+            $data[] = $row;
+         }
+         
+         echo(json_encode($data));
+         die("]");
       }
 
       else {
