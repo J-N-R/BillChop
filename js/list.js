@@ -4,13 +4,13 @@ $(document).ready(function() {
     $("#update-form").submit(function(event) {
         event.preventDefault();
         
-        window.location.replace("totals.html");
+        window.location.href = "totals.html";
     });
     
  // If bill couldn't be found, tell user
     if(!Cookies.get("bid")) {
       alert("It looks like we couldn't find your bill!\nRedirecting you to main page...");
-      window.location.replace(".");
+      window.location.href = ".";
     }
     
  // If name couldn't be found, prompt user for name
@@ -83,17 +83,22 @@ async function updateItem(item) {
     
 }
 
-function insertItems(items) {
+function insertItems(data) {
+
+    console.log(data);
+
+    items = data[0];
+    colors = data[1];
 
     if(items.hasOwnProperty("Error")) {
     
       if(items.Error.substring(0, 7) == "No bill") {
           alert("It looks like we couldn't find your bill!\nPlease try again with a different code.\nRedirecting you to main page...");
-          window.location.replace(".");
+          window.location.href = ".";
       }
       else {
           alert("It looks like there was a problem with your bill.\nPlease contact the developer.\nError: " + items.Error + "\nRedirecting you to the main page...");
-          window.location.replace(".");
+          window.location.href = ".";
       }
     }
 
@@ -123,5 +128,22 @@ function insertItems(items) {
         if(items[i].owner == Cookies.get("name"))
             list[0].childNodes[i].childNodes[1].checked = true;
           
+    }
+    
+    $("#legend").html("");
+    var legend = $("#legend");
+    
+ // Loop through every color and display legend
+    for(var i =0; i < colors.length; i++) {
+        var temp = "";
+        
+        temp += "<div class='row legend-item'>";
+        temp += "  <div class='col-5'>";
+        temp += "    <div class='box ml-auto' style='background-color: " + colors[i].color + "'></div>";
+        temp += "  </div>";
+        temp += "  <div class='col text-left legend-text'>" + colors[i].owner + "</div>";
+        temp += "</div>";
+        
+        legend.append(temp);
     }
 }

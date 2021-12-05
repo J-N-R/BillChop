@@ -273,3 +273,8 @@
       .bill {
         max-height: 800px;
       }
+      
+      .loading {
+        height: 100px;
+        display: none;
+      }
